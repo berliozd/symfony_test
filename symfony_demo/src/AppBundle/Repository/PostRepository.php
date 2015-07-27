@@ -22,18 +22,17 @@ use AppBundle\Entity\Post;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class PostRepository extends EntityRepository
-{
-    public function findLatest($limit = Post::NUM_ITEMS)
-    {
-        return $this
+class PostRepository extends EntityRepository {
+    public function findLatest($limit = Post::NUM_ITEMS) {
+
+        $query = $this
             ->createQueryBuilder('p')
             ->select('p')
             ->where('p.publishedAt <= :now')->setParameter('now', new \DateTime())
             ->orderBy('p.publishedAt', 'DESC')
             ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult()
-        ;
+            ->getQuery();
+
+        return $query->getResult();
     }
 }

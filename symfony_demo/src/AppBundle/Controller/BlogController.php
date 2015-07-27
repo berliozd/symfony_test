@@ -32,6 +32,7 @@ use AppBundle\Form\CommentType;
  */
 class BlogController extends Controller
 {
+
     /**
      * @Route("/", name="blog_index")
      */
@@ -54,6 +55,33 @@ class BlogController extends Controller
     public function postShowAction(Post $post)
     {
         return $this->render('blog/post_show.html.twig', array('post' => $post));
+    }
+
+    /**
+     * @Route(
+     *     "/articles/{_locale}/{year}/{title}.{_format}",
+     *     defaults={"_format": "html"},
+     *     requirements={
+     *         "_locale": "en|fr",
+     *         "_format": "html|rss|json",
+     *         "year": "\d+"
+     *     }
+     * )
+     */
+    public function showAction($_locale, $year, $title, $_format, $_controller, $_route)
+    {
+
+//        $params = $this->get('router')->match('/blog/articles/en/2010/titre.html');
+//        var_dump($params);exit;
+
+        $uri = $this->get('router')->generate('app_blog_show', array(
+            'year' => '2013',
+            'title' => 'titre boo'
+        ));
+        var_dump($uri);exit;
+
+        var_dump($_controller, $_route);exit;
+        Return new Response($_format);
     }
 
     /**
