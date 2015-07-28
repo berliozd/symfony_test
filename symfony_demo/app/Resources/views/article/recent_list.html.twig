@@ -1,0 +1,10 @@
+{# app/Resources/views/article/recent_list.html.twig #}
+<ul>
+{% for article in articles %}
+    <li>
+    <a href="{{ url('app_article_show', {'slug': article.slug}) }}">
+        {{ article.title }}
+    </a>
+    </li>
+{% endfor %}
+</ul>

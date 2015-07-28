@@ -1,10 +1,26 @@
 {# app/Resources/views/article/list.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Recent Articles<h1>
+{% block main %}
+<br>
+app.debug {{app.debug}} app.debug
+<br>
+app.environment{{ app.environment }}app.environment
+<p>Request method: {{ app.request.method }}</p>
+<br>
 
-    {% for article in articles %}
-        {{ include('article/article_details.html.twig', { 'article': article }) }}
-    {% endfor %}
+<h1>Recent Articles<h1>
+        {% for article in articles %}
+            {{ include('article/article_details.html.twig', { 'article': article }) }}
+        {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+
+        <img src="{{ asset('bundles/framework/images/logo_symfony.png') }}" alt="Symfony!" />
+
+
+        {{ parent() }}
+        {{ render(controller( 'AppBundle:Article:recentArticles', { 'max': 3 } )) }}
+
 {% endblock %}

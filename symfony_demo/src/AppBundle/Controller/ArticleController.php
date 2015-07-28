@@ -19,7 +19,8 @@ class ArticleController extends Controller {
      * @Route("/articles")
      * @return Response
      */
-    public function listAction() {
+    public function listAction()
+    {
         $articles = array(
             array('title' => 'titre1', 'authorName' => 'Victor hugo', 'body' => 'corps de aticle'),
             array('title' => 'titre2', 'authorName' => 'Victor hugozi', 'body' => 'corps de aticle 2'),
@@ -28,4 +29,23 @@ class ArticleController extends Controller {
         return $this->render('article/list.html.twig', array('articles' => $articles));
     }
 
+    public function recentArticlesAction($max = 3)
+    {
+        $articles = array(
+            array('slug'=>'1', 'title' => 'recent article 1', 'authorName' => 'Victor hugo', 'body' => 'corps de aticle'),
+            array('slug'=>'2', 'title' => 'recent article 2', 'authorName' => 'Victor hugozi', 'body' => 'corps de aticle 2'),
+        );
+
+        return $this->render('article/recent_list.html.twig', array('articles' => $articles)
+        );
+    }
+
+    /**
+     * @Route("/article/{slug}")
+     * @param $slug
+     */
+    public function showAction($slug)
+    {
+
+    }
 }
