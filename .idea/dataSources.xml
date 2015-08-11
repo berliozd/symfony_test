@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2343374610">
+    <data-source source="LOCAL" name="SQLite - blog_sqllite" uuid="ea30175f-9f35-48ed-8e1c-052e9ffcbf8e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/symfony_demo/app/data/blog.sqlite</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="SQLite - blog_test_sqllite" uuid="cc95c8ec-f3c1-40b7-a8cb-ea1cfa94f05b">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/symfony_demo/app/data/blog_test.sqlite</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

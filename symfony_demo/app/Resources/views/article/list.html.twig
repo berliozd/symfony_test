@@ -9,6 +9,8 @@ app.environment{{ app.environment }}app.environment
 <p>Request method: {{ app.request.method }}</p>
 <br>
 
+{{ dump(articles) }}
+
 <h1>Recent Articles<h1>
         {% for article in articles %}
             {{ include('article/article_details.html.twig', { 'article': article }) }}

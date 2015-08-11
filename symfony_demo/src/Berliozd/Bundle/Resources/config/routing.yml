@@ -1,0 +1,3 @@
+berliozd_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BerliozdBundle:Default:index }

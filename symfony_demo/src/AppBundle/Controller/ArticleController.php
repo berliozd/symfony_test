@@ -11,6 +11,8 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Intl\Locale\Locale;
 
 
 class ArticleController extends Controller {
@@ -19,7 +21,7 @@ class ArticleController extends Controller {
      * @Route("/articles")
      * @return Response
      */
-    public function listAction()
+    public function listAction(Request $_request)
     {
         $articles = array(
             array('title' => 'titre1', 'authorName' => 'Victor hugo', 'body' => 'corps de aticle'),
