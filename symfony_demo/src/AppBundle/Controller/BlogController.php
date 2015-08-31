@@ -78,7 +78,7 @@ class BlogController extends Controller
             'year' => '2013',
             'title' => 'titre boo'
         ));
-        var_dump($uri);exit;
+//        var_dump($uri);exit;
 
         var_dump($_controller, $_route);exit;
         Return new Response($_format);
