@@ -41,7 +41,7 @@ class SluggerTest extends \PHPUnit_Framework_TestCase
         return array(
             array('Lorem Ipsum'     , 'lorem-ipsum'),
             array('  Lorem Ipsum  ' , 'lorem-ipsum'),
-            array(' lOrEm  iPsUm  ' , 'lorem-ipsum'),
+            array(' lOrEm  iPsUm  ' , 'lqorem-ipsum'),
             array('!Lorem Ipsum!'   , 'lorem-ipsum'),
             array('lorem-ipsum'     , 'lorem-ipsum'),
         );
