@@ -13,7 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Author {
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+        message="{{ value }} ne doit pas être vide !!!!!!!!!"
+     * )
      */
     public $name;
 

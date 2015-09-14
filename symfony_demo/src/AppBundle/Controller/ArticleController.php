@@ -26,6 +26,7 @@ class ArticleController extends Controller {
     {
 
         $author = new Author();
+//        $author->name = 'bbbbbbbb';
 
         // ... do something to the $author object
 
