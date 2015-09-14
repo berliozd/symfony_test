@@ -4,9 +4,12 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\GroupSequenceProviderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @Assert\GroupSequenceProvider
  *
  * Defines the properties of the User entity to represent the application users.
  * See http://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
@@ -16,8 +19,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
+ *
  */
-class User implements UserInterface
+class User implements UserInterface, GroupSequenceProviderInterface
 {
     /**
      * @ORM\Id
@@ -40,6 +44,44 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @Assert\CardScheme(
+     *     schemes={"VISA"},
+     *     groups={"Premium"},
+     * )
+     */
+    private $creditCard;
+
+    private $isPremium;
+
+    /**
+     * @return mixed
+     */
+    public function getCreditCard() {
+        return $this->creditCard;
+    }
+
+    /**
+     * @param mixed $creditCard
+     */
+    public function setCreditCard($creditCard) {
+        $this->creditCard = $creditCard;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsPremium() {
+        return $this->isPremium;
+    }
+
+    /**
+     * @param mixed $isPremium
+     */
+    public function setIsPremium($isPremium) {
+        $this->isPremium = $isPremium;
+    }
 
     /**
      * @ORM\Column(type="json_array")
@@ -118,4 +160,16 @@ class User implements UserInterface
         // if you had a plainPassword property, you'd nullify it here
         // $this->plainPassword = null;
     }
+
+    public function getGroupSequence()
+    {
+        $groups = array('User');
+
+        if ($this->getIsPremium()) {
+            $groups[] = 'Premium';
+        }
+
+        return $groups;
+    }
+
 }
